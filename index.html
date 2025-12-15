@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoryBox</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/storybox_logo_nobg.png">
+</head>
+<body>
+<canvas id="background-canvas"></canvas>
+
+<div id="wrapper">
+
+    <!-- LANDSCAPE PANEL -->
+    <div id="landscape-panel">
+        <div class="land" id="ocean" data-name="ocean">🌊 Ocean</div>
+        <div class="land" id="countryside" data-name="countryside">🌾 Countryside</div>
+        <div class="land" id="city" data-name="city">🏙️ City</div>
+        <div class="land" id="glacier" data-name="glacier">🧊 Glacier</div>
+        <div class="land" id="mountain" data-name="mountain">⛰️ Mountain</div>
+        <div class="land" id="forest" data-name="forest">🌲 Forest</div>
+        <div class="land" id="desert" data-name="desert">🏜️ Desert</div>
+    </div>
+
+    <!-- STORY DISPLAY -->
+    <div id="story-container">
+        <div id="story-lines">
+            <div class="story-line">Waiting for story…</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Load canvas animation first -->
+<script src="canvas.js"></script>
+<!-- Then load main script -->
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,343 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", "SF Pro Display", sans-serif;
+    background: radial-gradient(circle at center, rgba(30,30,40,0.7), rgba(5,5,10,1));
+    transition: background 1.5s ease;
+    color: #ffffff;
+    overflow: hidden; /* Critical: prevent body scroll */
+}
+
+#background-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Critical: fixed height */
+    position: relative;
+    z-index: 1;
+    overflow: hidden; /* Prevent wrapper scroll */
+}
+
+/* --------- LANDSCAPE CHIPS PANEL --------- */
+#landscape-panel {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    flex-shrink: 0;
+    scroll-behavior: smooth;
+}
+
+#landscape-panel::-webkit-scrollbar {
+    display: none;
+}
+
+#panel-title {
+    margin: 0;
+    margin-right: 20px;
+    font-size: 16px;
+    opacity: 0.9;
+    white-space: nowrap;
+    align-self: center;
+    flex-shrink: 0;
+}
+
+.land {
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.08);
+    cursor: default;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.land.active {
+    background: rgba(255,255,255,0.25);
+    font-weight: 600;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+}
+
+.land:active {
+    transform: scale(0.95);
+}
+
+/* --------- STORY AREA (CRITICAL SCROLL FIXES) --------- */
+#story-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 20px;
+    overflow-y: auto !important; /* Force scrolling */
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    /* These are critical for scroll to work */
+    position: relative;
+    height: 100%;
+    justify-content: center; /* Center content vertically by default */
+}
+
+#story-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+#story-container::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
+}
+
+#story-container::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+}
+
+#story-lines {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 40vh; /* Start from middle of viewport */
+    padding-bottom: 60vh; /* Extra space so last line isn't at very bottom */
+    min-height: 100%;
+}
+
+.story-line {
+    font-size: 1.3rem;
+    line-height: 1.4;
+    margin: 18px 0;
+    opacity: 0.35;
+    transition: all 0.6s ease;
+    text-align: left;
+    word-wrap: break-word;
+    /* Strong text shadow for readability on any background */
+    text-shadow: 
+        0 0 10px rgba(0,0,0,0.9),
+        0 0 20px rgba(0,0,0,0.7),
+        2px 2px 4px rgba(0,0,0,0.8),
+        -1px -1px 2px rgba(0,0,0,0.6);
+}
+
+.story-line.active {
+    opacity: 1;
+    font-weight: 600;
+    font-size: 1.5rem;
+    padding-bottom: 30vh;
+    /* Even stronger shadow for active line */
+    text-shadow: 
+        0 0 15px rgba(0,0,0,1),
+        0 0 25px rgba(0,0,0,0.9),
+        2px 2px 6px rgba(0,0,0,0.9),
+        -2px -2px 4px rgba(0,0,0,0.8),
+        0 2px 20px rgba(255,255,255,0.3);
+}
+
+.story-line.past {
+    opacity: 0.5;
+}
+
+.story-line.future {
+    opacity: 0.35;
+}
+
+/* --------- TYPING EFFECT FOR LOADING STATE (FINAL REVISION) --------- */
+.typing-effect {
+    /* Ensures the line container can hold the effect */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.typing-text {
+    font-size: 2.0rem; 
+    opacity: 0.35;
+    
+    white-space: nowrap; 
+    overflow: hidden; 
+    
+    /* Animation definitions */
+    border-right: 3px solid #fff; 
+}
+
+/* Keyframes remain unchanged */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% } 
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent } 
+    50% { border-color: #fff; } 
+}
+
+/* --------- MEDIA QUERIES --------- */
+
+@media (max-width: 380px) {
+    #landscape-panel {
+        padding: 12px 15px;
+        gap: 8px;
+    }
+    
+    #panel-title {
+        font-size: 14px;
+        margin-right: 15px;
+    }
+    
+    .land {
+        padding: 8px 14px;
+        font-size: 13px;
+    }
+    
+    #story-container {
+        padding: 20px 15px;
+    }
+    
+    .story-line {
+        font-size: 1.2rem;
+        line-height: 1.3;
+        margin: 15px 0;
+    }
+    
+    .story-line.active {
+        font-size: 1.35rem;
+        padding-bottom: 30vh;
+    }
+}
+
+@media (min-width: 768px) {
+    #wrapper {
+        flex-direction: row;
+    }
+    
+    #landscape-panel {
+        width: 200px;
+        flex-direction: column;
+        padding: 25px 20px;
+        gap: 18px;
+        border-right: 1px solid rgba(255,255,255,0.1);
+        border-bottom: none;
+        overflow-y: auto;
+        overflow-x: hidden;
+        flex-wrap: wrap;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        scroll-behavior: auto;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    
+    #panel-title {
+        font-size: 20px;
+        margin-right: 0;
+        margin-bottom: 10px;
+        align-self: flex-start;
+        text-align: left;
+        width: 100%;
+    }
+    
+    .land {
+        padding: 15px;
+        font-size: 18px;
+        border-radius: 12px;
+        text-align: left;
+        border: none;
+        justify-content: flex-start;
+        width: 100%;
+    }
+    
+    .land.active {
+        transform: none;
+        box-shadow: 0 4px 15px rgba(255,255,255,0.15);
+        justify-content: flex-start;
+        text-align: left;
+    }
+    
+    .land:active {
+        transform: none;
+    }
+    
+    #story-container {
+        padding: 50px 40px;
+        overflow-y: auto !important; /* Force on desktop */
+    }
+    
+    .story-line {
+        font-size: 1.8rem;
+        line-height: 1.5;
+        margin: 22px 0;
+    }
+    
+    .story-line.active {
+        font-size: 2rem;
+        position: relative;
+        padding-bottom: 30vh;
+    }
+}
+
+@media (min-width: 1024px) {
+    #landscape-panel {
+        width: 13%;
+        min-width: 200px;
+    }
+    
+    #story-container {
+        padding: 70px;
+    }
+    
+    .story-line {
+        font-size: 2.2rem;
+        margin: 25px 0;
+    }
+    
+    .story-line.active {
+        font-size: 2.4rem;
+        padding-bottom: 30vh;
+    }
+}
+
+@media (min-width: 1440px) {
+    #story-lines {
+        width: 80%;
+    }
+}
+
+.land {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#landscape-panel, #story-container {
+    transition: all 0.3s ease;
+}
