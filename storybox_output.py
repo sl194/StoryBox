@@ -6,7 +6,7 @@ import requests
 
 
 # USER CONFIGURATION
-USE_MOCK_DATA = False #True
+USE_MOCK_DATA = False #True, #False
 BAUD = 115200
 STORY_TYPE_MODE = "RANDOM" #RANDOM, #EMOTIONAL, #DATA
 OUTPUT_MODE = "COMBINED" #DISPLAY, #SPOKEN, #COMBINED
@@ -29,7 +29,7 @@ def get_mock_environment():
         "T": random.uniform(15.0, 35.0),
         "H": random.uniform(30.0, 80.0),
         "WIND": random.uniform(0.0, 15.0),
-        "DEPTH": random.uniform(5.0, 25.0)
+        "DEPTH": random.uniform(1.0, 4.0)
     }
 
 
