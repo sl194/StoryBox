@@ -1,6 +1,9 @@
-# 🌍 StoryBox: Interactive Climate Storytelling Installation
+# 🌍 StoryBox: Embodied Multimodal AI Storytelling for Experiential Climate Change Communication
 
-**StoryBox** is an immersive, AI-powered installation that transforms environmental data into personalized climate narratives. Users become "gods" of a miniature world, manipulating physical conditions (temperature, humidity, wind, water) and witnessing how their actions cascade through seven interconnected landscapes through real-time storytelling, dynamic visuals, and ambient lighting.
+**StoryBox** is an immersive, AI-powered installation that transforms environmental data into personalized climate narratives. Users become "gods" of a miniature world, manipulating physical conditions (temperature, humidity, wind, water) and witnessing how their actions cascade through seven interconnected landscapes through real-time storytelling, dynamic visuals, and ambient lighting.  
+
+**Built for Cornell University's DEA6400: AI, Embodiment, and Design Class (Fall 2025)**  
+Team: Sharmayne Lim, Yao Zhang, Lily Yi, Shi Zhan
 
 ## ✨ Features
 
@@ -189,6 +192,3 @@ time.sleep(2.0)  # Increase for slower pacing
 
 ### Add Custom Surprising Causes
 Edit `surprising_causes` list in `build_prompt()` function (line 84)
-
-**Built for DEA6400: AI, Embodiment, and Design Class (Fall 2025)**
-**Team: Sharmayne Lim, Yao Zhang, Lily Yi, Shi Zhan**
