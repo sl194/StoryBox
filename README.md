@@ -190,5 +190,5 @@ time.sleep(2.0)  # Increase for slower pacing
 ### Add Custom Surprising Causes
 Edit `surprising_causes` list in `build_prompt()` function (line 84)
 
-**Built for DEA6400: AI, Embodiment, and Design Class (Fall 2025)**
+**Built for DEA6400: AI, Embodiment, and Design Class (Fall 2025)**  
 Team: Sharmayne Lim, Yao Zhang, Lily Yi, Shi Zhan
