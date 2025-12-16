@@ -158,7 +158,7 @@ Open browser to: **http://localhost:8000/index.html**
 storybox/
 ├── storybox_output.py          # Main Python script
 ├── arduino/
-│   └── storybox_sensors.ino    # Arduino sensor code
+│   └── arduino.ino    # Arduino sensor code
 ├── web/
 │   ├── index.html              # Web interface
 │   ├── style.css               # Styling
